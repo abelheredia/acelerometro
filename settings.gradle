@@ -1,0 +1,2 @@
+rootProject.name='acelerometro'
+include ':app'
