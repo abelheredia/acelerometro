@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     SensorManager sensorManager;
     Sensor sensor;
     TextView hola;
-    Float ga;
+    Float a;
     SensorEventListener  sensorEventListener;
     int whip = 0;
 
@@ -37,8 +37,8 @@ public class MainActivity extends AppCompatActivity {
             public void onSensorChanged(SensorEvent sensorEvent) {
                 float x = sensorEvent.values[0];
                 Log.e("valor giro", x+"");
-                ga = x;
-                hola.setText(ga.toString().replace("-",""));
+                a = x;
+                hola.setText(a.toString().replace("-",""));
                 if (x<-5 && whip==0){
                     whip++;
                     getWindow().getDecorView().setBackgroundColor(Color.BLUE);
@@ -66,9 +66,9 @@ public class MainActivity extends AppCompatActivity {
     public void alertOneButton() {
 
         new AlertDialog.Builder(MainActivity.this)
-                .setTitle("CUIDAOOOOOOOOO!")
-                .setMessage("MANEJA BONITO CONCHATUMARE")
-                .setPositiveButton("YA BB UU", new DialogInterface.OnClickListener() {
+                .setTitle("CUIDADO ! ")
+                .setMessage("NO ACELERES MUY RÁPIDO !")
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
 
                         dialog.cancel();
