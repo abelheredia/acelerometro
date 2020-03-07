@@ -1,7 +1,9 @@
 package com.example.acelerometro;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -19,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     Float ga;
     SensorEventListener  sensorEventListener;
     int whip = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,9 +45,11 @@ public class MainActivity extends AppCompatActivity {
                 }else if (x>5 && whip==1){
                     whip++;
                     getWindow().getDecorView().setBackgroundColor(Color.RED);
+
                 }
                 if (whip==2){
                     sound();
+                    alertOneButton();
                     whip=0;
                 }
 
@@ -56,6 +61,19 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         start();
+    }
+
+    public void alertOneButton() {
+
+        new AlertDialog.Builder(MainActivity.this)
+                .setTitle("CUIDAOOOOOOOOO!")
+                .setMessage("MANEJA BONITO CONCHATUMARE")
+                .setPositiveButton("YA BB UU", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                        dialog.cancel();
+                    }
+                }).show();
     }
 
     private void sound(){
